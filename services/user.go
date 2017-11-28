@@ -3,6 +3,7 @@ package services
 import (
 	"github.com/SausageRocketDatingService/SausageRocketApi/models"
 	"github.com/SausageRocketDatingService/SausageRocketApi/repositories"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // UserService handles some of the CRUID operations of a user model.
@@ -34,6 +35,13 @@ func (s *userService) GetByEmail(email string) (models.User, error) {
 
 // Create a new user
 func (s *userService) Create(user models.User) error {
+	var hashedPassword string
+	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(user.Password), 10)
+	if err != nil {
+		return err
+	}
+	hashedPassword = string(hashedBytes)
+	user.Password = hashedPassword
 	return s.repo.Insert(user)
 }
 

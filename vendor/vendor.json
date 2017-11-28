@@ -1,28 +1,66 @@
 {
-  "comment": "",
-  "heroku": {
-    "goVersion": "go1.9",
-    "install": ["./"]
-  },
-  "ignore": "test",
-  "package": [
-    {
-      "path": "github.com/kataras/iris",
-      "revision": "",
-      "tree": true
-    },
-    {
-      "checksumSHA1": "DAgL2wVAwIyfR4Zgp0OMEuwz6VU=",
-      "path": "github.com/kataras/pio",
-      "revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
-      "revisionTime": "2017-08-09T18:19:20Z"
-    },
-    {
-      "checksumSHA1": "IJdcFmWkZYmaE/GRZutuUcKuvHU=",
-      "path": "github.com/kataras/pio/terminal",
-      "revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
-      "revisionTime": "2017-08-09T18:19:20Z"
-    }
-  ],
-  "rootPath": "github.com/SausageRocketDatingService/SausageRocketApi"
+	"comment": "",
+	"heroku": {
+		"goVersion": "go1.9",
+		"install": [
+			"./"
+		]
+	},
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "YkpuNhq75eI7X98jjtYh5gfsnts=",
+			"path": "github.com/go-xorm/builder",
+			"revision": "a4a881a4e552fcb5473f39e8b9f7d9f3457a7fb0",
+			"revisionTime": "2017-10-30T02:14:29Z"
+		},
+		{
+			"checksumSHA1": "czsg/u5QHYq1e5atVaxNOwCz6M0=",
+			"path": "github.com/go-xorm/core",
+			"revision": "7ba98d23bc4218169d31ab64e93313edb5a5fb27",
+			"revisionTime": "2017-11-23T12:03:32Z"
+		},
+		{
+			"checksumSHA1": "xGBXr8JPr5q9WIK3xFAxmfF/3R8=",
+			"path": "github.com/go-xorm/xorm",
+			"revision": "a6cc0986897283170a53411cf6f40ae88a433ce2",
+			"revisionTime": "2017-11-20T08:14:27Z"
+		},
+		{
+			"checksumSHA1": "0cdNscA7+z4+lKF5usZYz3it/04=",
+			"path": "github.com/joho/godotenv",
+			"revision": "6d367c18edf6ca7fd004efd6863e4c5728fa858e",
+			"revisionTime": "2017-11-10T01:03:15Z"
+		},
+		{
+			"path": "github.com/kataras/iris",
+			"revision": "",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "DAgL2wVAwIyfR4Zgp0OMEuwz6VU=",
+			"path": "github.com/kataras/pio",
+			"revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
+			"revisionTime": "2017-08-09T18:19:20Z"
+		},
+		{
+			"checksumSHA1": "IJdcFmWkZYmaE/GRZutuUcKuvHU=",
+			"path": "github.com/kataras/pio/terminal",
+			"revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
+			"revisionTime": "2017-08-09T18:19:20Z"
+		},
+		{
+			"checksumSHA1": "IfZcD4U1dtllJKlPNeD2aU4Jn98=",
+			"path": "github.com/lib/pq",
+			"revision": "83612a56d3dd153a94a629cd64925371c9adad78",
+			"revisionTime": "2017-11-26T05:04:59Z"
+		},
+		{
+			"checksumSHA1": "AU3fA8Sm33Vj9PBoRPSeYfxLRuE=",
+			"path": "github.com/lib/pq/oid",
+			"revision": "83612a56d3dd153a94a629cd64925371c9adad78",
+			"revisionTime": "2017-11-26T05:04:59Z"
+		}
+	],
+	"rootPath": "github.com/SausageRocketDatingService/SausageRocketApi"
 }

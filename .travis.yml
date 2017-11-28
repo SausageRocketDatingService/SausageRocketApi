@@ -1,0 +1,34 @@
+language: go
+sudo: enabled
+go:
+- 1.9.1
+install: true
+matrix:
+  allow_failures:
+  - go: dev
+  fast_finish: true
+notifications:
+  email: false
+before_script:
+- GO_FILES=$(find . -iname '*.go' -type f | grep -v /vendor/)
+- go get -t github.com/golang/lint/golint
+- go get -t github.com/rakyll/gotest
+- go get -t honnef.co/go/tools/cmd/megacheck
+- go get -t github.com/fzipp/gocyclo
+- go get -t github.com/kataras/iris
+- export CI=TRAVIS
+script:
+- test -z $(gofmt -s -l $GO_FILES)
+- go test -v -race ./...
+- go vet ./...
+- megacheck ./...
+- gocyclo -over 19 $GO_FILES
+- golint -set_exit_status $(go list ./...)
+deploy:
+  provider: heroku
+  api_key:
+    secure: QhwbgOWBPa8O8Ow/nc3qDMIMetZl/ZdZSP3t46KLp7rotDJk91fRQYjZBeDAMCgp3dguvyc6DOQMJfyKuYlP3v0ogn2CpI8lvm2JLB/Tyw7v+j4bnR7QV/Wdx7QH5eJi8YRu4/JbntspBIg8igspqlXy9/402SvUWop9idbIhztS786xWRTZ0sRHwdUCw+kTE5au9DVoWcyNZEvhPBf9e7toO1zLl/xoV7ce1Pcq3FJiIzPl4uApFtEARFi319c2OfFuo7dV4IMxWGSHyFnxm/OFEpEevE+jlxqq0zPNyQM4pNkncxIGy2cAb1+Mdf/M2OcQGsZnsmShfq7BnO0rx+RDstnIAczJ3wEQjaQDfp+IYoeemtdfX2p0h+qUaSrOzSwz3QwKJYpnanLa2PYPLH/XD2KsjPbZGAy43KhMFYm0j1Jc74SM+FM081i0jfyUiRqk7fIn7/Dm9/WtP8M0Bz62kxCEClaBa/ACJKzf3m1+QWhK3bGW2s4721Safg4NDUtCPPnaPQzy8Mve0oQSqmNCg8ICeoUGNW3/eUJmYUZ8ACM0vWVrjvyCiZNelNbYNxfshBnMjpqOjyKAhXgWHky8Y+9AXnXtHsdgAqYd3nJvsMGII7cxaR5dG3WArTsjpahA9ZjRb3s53cmRAgmn2lY3/djFPngCF/N6IVvDNwU=
+  app: sausagerocketapi
+  on:
+    repo: SausageRocketDatingService/SausageRocketApi
+    branch: dev

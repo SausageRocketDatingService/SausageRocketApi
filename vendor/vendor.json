@@ -1,0 +1,28 @@
+{
+  "comment": "",
+  "heroku": {
+    "goVersion": "go1.9",
+    "install": ["./"]
+  },
+  "ignore": "test",
+  "package": [
+    {
+      "path": "github.com/kataras/iris",
+      "revision": "",
+      "tree": true
+    },
+    {
+      "checksumSHA1": "DAgL2wVAwIyfR4Zgp0OMEuwz6VU=",
+      "path": "github.com/kataras/pio",
+      "revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
+      "revisionTime": "2017-08-09T18:19:20Z"
+    },
+    {
+      "checksumSHA1": "IJdcFmWkZYmaE/GRZutuUcKuvHU=",
+      "path": "github.com/kataras/pio/terminal",
+      "revision": "825e39f34365e7db2c9fbc3692c16220e3bd7418",
+      "revisionTime": "2017-08-09T18:19:20Z"
+    }
+  ],
+  "rootPath": "github.com/SausageRocketDatingService/SausageRocketApi"
+}

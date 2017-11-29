@@ -33,7 +33,7 @@ func (r *userRepository) Select(id int64) (models.User, error) {
 		"Images",
 		"Gender",
 		"Description",
-	).Id(id).Get(&user)
+	).ID(id).Get(&user)
 	return user, err
 }
 

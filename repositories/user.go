@@ -25,8 +25,15 @@ type userRepository struct {
 
 // Select returns a user by id
 func (r *userRepository) Select(id int64) (models.User, error) {
-	var user = models.User{}
-	_, err := r.engine.Id(id).Get(&user)
+	var user = models.User{ID: id}
+	_, err := r.engine.Cols(
+		"Name",
+		"Email",
+		"Location",
+		"Images",
+		"Gender",
+		"Description",
+	).Id(id).Get(&user)
 	return user, err
 }
 

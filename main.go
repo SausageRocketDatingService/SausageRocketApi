@@ -5,7 +5,10 @@ import (
 	"os"
 
 	"github.com/SausageRocketDatingService/SausageRocketApi/config"
-	"github.com/SausageRocketDatingService/SausageRocketApi/handlers"
+	"github.com/SausageRocketDatingService/SausageRocketApi/controllers"
+	"github.com/SausageRocketDatingService/SausageRocketApi/repositories"
+	"github.com/SausageRocketDatingService/SausageRocketApi/services"
+
 	"github.com/joho/godotenv"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
@@ -39,7 +42,9 @@ func main() {
 		orm.Close()
 	})
 
-	app.Get("/", handlers.HelloWorld)
+	userRepo := repositories.NewUserRepository(orm)
+	userService := services.NewUserService(userRepo)
+	app.Controller("/users", new(controllers.UserController), userService)
 
-	app.Run(iris.Addr(":" + port))
+	app.Run(iris.Addr(":"+port), iris.WithOptimizations)
 }

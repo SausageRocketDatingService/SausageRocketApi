@@ -9,7 +9,7 @@ import (
 // UserService handles some of the CRUID operations of a user model.
 type UserService interface {
 	GetAll() ([]models.User, error)
-	GetByEmail(email string) (models.User, error)
+	GetByID(id int64) (models.User, error)
 	Create(user models.User) error
 	DeleteByID(id int64) error
 }
@@ -28,9 +28,9 @@ func (s *userService) GetAll() ([]models.User, error) {
 	return s.repo.SelectMany()
 }
 
-// GetByEmail returns a user on its email
-func (s *userService) GetByEmail(email string) (models.User, error) {
-	return s.repo.Select(email)
+// GetByID returns a user on its id
+func (s *userService) GetByID(id int64) (models.User, error) {
+	return s.repo.Select(id)
 }
 
 // Create a new user

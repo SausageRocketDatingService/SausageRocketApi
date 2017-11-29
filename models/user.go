@@ -9,15 +9,15 @@ import (
 // User represents DB Model of User
 type User struct {
 	ID          int64
-	Name        string
-	Email       string
-	Phone       string
-	BirthDate   time.Time
-	Password    string
-	Location    string
-	Images      []string
-	Gender      string
-	Description string
+	Name        string    `json:"name"`
+	Email       string    `json:"email"`
+	Phone       string    `json:"phone"`
+	BirthDate   time.Time `json:"birthDate"`
+	Password    string    `json:"password"`
+	Location    string    `json:"location"`
+	Images      []string  `json:"images"`
+	Gender      string    `json:"gender"`
+	Description string    `json:"description"`
 
 	CreatedAt time.Time `xorm:"created"`
 	UpdatedAt time.Time `xorm:"updated"`

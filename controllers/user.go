@@ -18,21 +18,14 @@ func (c *UserController) Get() ([]models.User, error) {
 	return users, err
 }
 
-// GetBy returns an a user by email or an error
-func (c *UserController) GetBy() (models.User, error) {
-	// Check if error returns in a propriate way
-	// Validate email
-	var email string
-	err := c.Ctx.ReadJSON(&email)
-	if err != nil {
-		return models.User{}, err
-	}
-	user, serviceError := c.Service.GetByEmail(email)
-	return user, serviceError
+// GetBy returns an a user by id or an error
+func (c *UserController) GetBy(id int64) (models.User, error) {
+	user, err := c.Service.GetByID(id)
+	return user, err
 }
 
-// Create controller creates new user
-func (c *UserController) Create() error {
+// Put creates new user
+func (c *UserController) Put() error {
 	var user models.User
 	err := c.Ctx.ReadJSON(&user)
 	if err != nil {

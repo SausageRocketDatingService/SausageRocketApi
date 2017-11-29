@@ -1,8 +1,6 @@
 package repositories
 
 import (
-	"sync"
-
 	"github.com/go-xorm/xorm"
 
 	"github.com/SausageRocketDatingService/SausageRocketApi/models"
@@ -11,25 +9,24 @@ import (
 // UserRepository handles the basic operations of a user model.
 type UserRepository interface {
 	SelectMany() (users []models.User, err error)
-	Select(email string) (user models.User, err error)
+	Select(id int64) (user models.User, err error)
 	Insert(user models.User) (err error)
 	Delete(id int64) (err error)
 }
 
 // NewUserRepository returns a new user repository,
-func NewUserRepository(engine xorm.Engine) UserRepository {
+func NewUserRepository(engine *xorm.Engine) UserRepository {
 	return &userRepository{engine: engine}
 }
 
 type userRepository struct {
-	engine xorm.Engine
-	mu     sync.RWMutex
+	engine *xorm.Engine
 }
 
-// Select returns a user by email
-func (r *userRepository) Select(email string) (models.User, error) {
-	var user = models.User{Email: email}
-	_, err := r.engine.Get(&user)
+// Select returns a user by id
+func (r *userRepository) Select(id int64) (models.User, error) {
+	var user = models.User{}
+	_, err := r.engine.Id(id).Get(&user)
 	return user, err
 }
 

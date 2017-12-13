@@ -12,6 +12,7 @@ type UserService interface {
 	GetByID(id int64) (models.User, error)
 	Create(user models.User) error
 	DeleteByID(id int64) error
+	GetByUsernameAndPassword(username string, password string) (models.User, bool, error)
 }
 
 // NewUserService returns a user service.
@@ -47,4 +48,11 @@ func (s *userService) Create(user models.User) error {
 
 func (s *userService) DeleteByID(id int64) error {
 	return s.repo.Delete(id)
+}
+
+func (s *userService) GetByUsernameAndPassword(username string, password string) (models.User, bool, error) {
+	// make selectBy function in repository
+	// add jwt
+	// return isFound if it's found
+	return models.User{}, false, nil
 }

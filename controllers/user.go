@@ -40,3 +40,18 @@ func (c *UserController) DeleteBy(id int64) error {
 	err := c.Service.DeleteByID(id)
 	return err
 }
+
+//PostLogin handles user login route
+func (c *UserController) PostLogin() (string, error) {
+	username, err := c.Ctx.JSON("username")
+	if uErr != nil {
+		return "", err
+	}
+	password, err := c.Ctx.JSON("password")
+	if pErr != nil {
+		return "", err
+	}
+
+	// u, found, userError := c.Service.GetByUsernameAndPassword(username, password)
+
+}
